@@ -1,12 +1,13 @@
 ﻿#pragma strict
 //var speed: float;
 var MoveToken : GameObject;
- 
+var GameObjectClone : GameObject;
+
 function Update () {
 	//Movement();
 	if(Input.GetMouseButtonDown(1))//Checks to see if left mouse button was clicked.
     {
-    	var GameObjectClone = GameObject.Find("Movement_Cursor(Clone)");
+    	GameObjectClone = GameObject.Find("Movement_Cursor(Clone)");
     	//TODO: Check if Unit is Selected
     	if(GameObjectClone == null)
     	{
@@ -20,6 +21,15 @@ function Update () {
     		Debug.Log("Recreate Move Token");
 			CreateMoveToken();
     	}
+    }
+}
+
+function OnCollisionEnter(col : Collision) {
+
+    if(col.gameObject.name == "Movement_Cursor(Clone)")
+    {
+    	Debug.Log("Delete Move Token");
+        Destroy(col.gameObject);
     }
 }
 

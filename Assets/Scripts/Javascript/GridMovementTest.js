@@ -8,13 +8,15 @@
         // The step size is equal to speed times frame time.
         var step = speed * Time.deltaTime;
         var GameObjectClone = GameObject.Find("Movement_Cursor(Clone)");
-        if(GameObjectClone == null)
-        {
-        	//Dont Move
-        }
-        else
-        {
-        	// Move our position a step closer to the target.
+        if(1){
+        	if(GameObjectClone == null)
+        	{
+        		//Dont Move
+        	}
+        	else
+	        {
+	        	// Move our position a step closer to the target.
         	transform.position = Vector3.MoveTowards(transform.position, GameObjectClone.transform.position, step);
+        	}
         }
     }
